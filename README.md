@@ -19,3 +19,7 @@ At the time of check out
 - BulkSMS REST API for Sending SMS
 
 # Screenshots
+![Check-In](https://github.com/Abhikgp/InnovaccerSummerGeeks/blob/master/Screenshots/check_in.png)
+![Check-Out](https://github.com/Abhikgp/InnovaccerSummerGeeks/blob/master/Screenshots/checkout.png)
+![Show Visitors](https://github.com/Abhikgp/InnovaccerSummerGeeks/blob/master/Screenshots/show_visitors.png)
+![Search-Token](https://github.com/Abhikgp/InnovaccerSummerGeeks/blob/master/Screenshots/search_token.png)
