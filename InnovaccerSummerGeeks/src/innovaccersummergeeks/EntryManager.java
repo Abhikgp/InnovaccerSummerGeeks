@@ -778,7 +778,7 @@ public class EntryManager extends javax.swing.JFrame {
         VisitorEntry v = dbHandler.getEntry(token);
         sendCheckoutEmail(v);
         try {
-            sendSMS(v.visitor_phone, "Test text");
+            sendSMS(v.visitor_phone, v.getCheckoutMail(dbHandler.getHost(v.host_email)));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
