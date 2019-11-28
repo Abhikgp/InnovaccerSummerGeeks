@@ -209,7 +209,7 @@
                           <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="headingLabel" pref="1226" max="32767" attributes="0"/>
+                              <Component id="headingLabel" pref="1206" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -317,7 +317,7 @@
                               <Component id="jButton1" min="-2" pref="106" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="582" max="32767" attributes="0"/>
+                      <EmptySpace pref="562" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -336,7 +336,7 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="208" max="32767" attributes="0"/>
+                      <EmptySpace pref="395" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -370,9 +370,6 @@
                   <Font name="Dialog" size="18" style="0"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tokenTextFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="checkoutTextField">
               <Properties>
@@ -388,6 +385,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Submit"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -412,25 +412,27 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="checkinTimeLabel1" alignment="0" pref="216" max="32767" attributes="0"/>
+                          <Component id="checkinTimeLabel1" alignment="0" max="32767" attributes="0"/>
                           <Component id="nameLabel1" alignment="0" max="32767" attributes="0"/>
                           <Component id="emailLabel1" alignment="0" max="32767" attributes="0"/>
                           <Component id="phoneLabel1" max="32767" attributes="0"/>
                           <Component id="hostEmail1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="dateLabel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="checkinTextField" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Component id="hostEmailTextField1" min="-2" pref="233" max="-2" attributes="0"/>
                           <Component id="emailTextField" min="-2" pref="233" max="-2" attributes="0"/>
                           <Component id="phoneTextField" min="-2" pref="233" max="-2" attributes="0"/>
                           <Component id="nameTextField" min="-2" pref="233" max="-2" attributes="0"/>
-                          <Component id="hostEmailTextField1" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Component id="checkinTextField" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Component id="dateTextField" min="-2" pref="233" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="664" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="274" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="106" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
+                      <Component id="checkinButton" min="-2" pref="106" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -439,33 +441,40 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="nameLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="nameLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="emailLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="phoneLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="phoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="dateTextField" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="dateLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="emailLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="checkinTextField" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkinTimeLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="phoneLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="phoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="checkinTimeLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="checkinTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="hostEmail1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="hostEmailTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="hostEmail1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="84" max="32767" attributes="0"/>
+                      <Component id="checkinButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="221" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -547,13 +556,6 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="checkinTextField">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="18" style="0"/>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="hostEmailTextField1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -561,12 +563,40 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JTextField" name="checkinTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="checkinButton">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="18" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Submit"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="checkinButtonMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="dateLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Date(YYYY-MM-DD)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="dateTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="0"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -610,7 +640,7 @@
                               <Component id="jButton3" min="-2" pref="106" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="582" max="32767" attributes="0"/>
+                      <EmptySpace pref="562" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -634,7 +664,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="178" max="32767" attributes="0"/>
+                      <EmptySpace pref="365" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -683,6 +713,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Submit"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="hostPhoneLabel">
               <Properties>
@@ -700,6 +733,298 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="18" style="0"/>
                 </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="searchTokenPanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card2"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="checkinTimeLabel2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="nameLabel2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="emailLabel2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="phoneLabel2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="hostEmail2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="dateLabel1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="nameLabel3" alignment="1" max="32767" attributes="0"/>
+                          <Component id="checkinTimeLabel3" alignment="1" max="32767" attributes="0"/>
+                          <Component id="checkinTimeLabel4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="hostEmail3" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="showHostPhoneTextField" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Component id="showVisitorNameTextField" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Component id="showHostEmailTextField" alignment="0" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Component id="showVisitorEmailTextField" alignment="0" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Component id="showVisitorPhoneTextField" alignment="0" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Component id="showTokenTextField" alignment="0" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Component id="showCheckoutTextField" alignment="0" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Component id="showDateTextField" alignment="0" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Component id="showCheckinTextField" min="-2" pref="233" max="-2" attributes="0"/>
+                          <Component id="showHostNameTextField" min="-2" pref="233" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="664" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="nameLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="showTokenTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="showVisitorNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nameLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="showVisitorEmailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="emailLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="phoneLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="showVisitorPhoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="showDateTextField" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="dateLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="showCheckinTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkinTimeLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="showCheckoutTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkinTimeLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="showHostNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkinTimeLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="showHostEmailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="hostEmail3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="showHostPhoneTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="hostEmail2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="135" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="nameLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Token"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="emailLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Visitor Email"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="phoneLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Visitor Phone"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="checkinTimeLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Check-out Time"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="hostEmail2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Host  Phone"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="showTokenTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="showVisitorEmailTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="showVisitorPhoneTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="showHostEmailTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="showCheckoutTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="dateLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Date(YYYY-MM-DD)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="showDateTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="nameLabel3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Visitor Name"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="showVisitorNameTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="showCheckinTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="checkinTimeLabel3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Check-in Time"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="checkinTimeLabel4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Host Name"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="showHostNameTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="showHostPhoneTextField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="hostEmail3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Host Email"/>
               </Properties>
             </Component>
           </SubComponents>

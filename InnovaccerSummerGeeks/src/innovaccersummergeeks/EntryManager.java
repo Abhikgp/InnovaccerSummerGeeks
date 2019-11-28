@@ -6,6 +6,7 @@
 package innovaccersummergeeks;
 
 import java.awt.Color;
+import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -40,6 +41,8 @@ public class EntryManager extends javax.swing.JFrame {
                 return visitors[i].toString();
             }
         });
+        
+        dbHandler = new DatabaseHandler();
     }
 
     /**
@@ -78,9 +81,11 @@ public class EntryManager extends javax.swing.JFrame {
         nameTextField = new javax.swing.JTextField();
         emailTextField = new javax.swing.JTextField();
         phoneTextField = new javax.swing.JTextField();
-        checkinTextField = new javax.swing.JTextField();
         hostEmailTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        checkinTextField = new javax.swing.JTextField();
+        checkinButton = new javax.swing.JButton();
+        dateLabel = new javax.swing.JLabel();
+        dateTextField = new javax.swing.JTextField();
         registerHostPanel = new javax.swing.JPanel();
         hostNameLabel = new javax.swing.JLabel();
         hostEmailLabel = new javax.swing.JLabel();
@@ -89,6 +94,27 @@ public class EntryManager extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         hostPhoneLabel = new javax.swing.JLabel();
         hostEmailTextField = new javax.swing.JTextField();
+        searchTokenPanel = new javax.swing.JPanel();
+        nameLabel2 = new javax.swing.JLabel();
+        emailLabel2 = new javax.swing.JLabel();
+        phoneLabel2 = new javax.swing.JLabel();
+        checkinTimeLabel2 = new javax.swing.JLabel();
+        hostEmail2 = new javax.swing.JLabel();
+        showTokenTextField = new javax.swing.JTextField();
+        showVisitorEmailTextField = new javax.swing.JTextField();
+        showVisitorPhoneTextField = new javax.swing.JTextField();
+        showHostEmailTextField = new javax.swing.JTextField();
+        showCheckoutTextField = new javax.swing.JTextField();
+        dateLabel1 = new javax.swing.JLabel();
+        showDateTextField = new javax.swing.JTextField();
+        nameLabel3 = new javax.swing.JLabel();
+        showVisitorNameTextField = new javax.swing.JTextField();
+        showCheckinTextField = new javax.swing.JTextField();
+        checkinTimeLabel3 = new javax.swing.JLabel();
+        checkinTimeLabel4 = new javax.swing.JLabel();
+        showHostNameTextField = new javax.swing.JTextField();
+        showHostPhoneTextField = new javax.swing.JTextField();
+        hostEmail3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -208,7 +234,7 @@ public class EntryManager extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(showVisitorPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(headingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1226, Short.MAX_VALUE)))
+                        .addComponent(headingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 1206, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         showVisitorPanelLayout.setVerticalGroup(
@@ -234,16 +260,16 @@ public class EntryManager extends javax.swing.JFrame {
         checkoutTimeLabel.setText("Checkout  Time");
 
         tokenTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        tokenTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tokenTextFieldActionPerformed(evt);
-            }
-        });
 
         checkoutTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton1.setText("Submit");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout checkoutPanelLayout = new javax.swing.GroupLayout(checkoutPanel);
         checkoutPanel.setLayout(checkoutPanelLayout);
@@ -263,7 +289,7 @@ public class EntryManager extends javax.swing.JFrame {
                     .addGroup(checkoutPanelLayout.createSequentialGroup()
                         .addGap(352, 352, 352)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(582, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
         checkoutPanelLayout.setVerticalGroup(
             checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +304,7 @@ public class EntryManager extends javax.swing.JFrame {
                     .addComponent(checkoutTimeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(395, Short.MAX_VALUE))
         );
 
         variablePanel.add(checkoutPanel, "card2");
@@ -312,12 +338,23 @@ public class EntryManager extends javax.swing.JFrame {
 
         phoneTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        checkinTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-
         hostEmailTextField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton2.setText("Submit");
+        checkinTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        checkinButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        checkinButton.setText("Submit");
+        checkinButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkinButtonMouseClicked(evt);
+            }
+        });
+
+        dateLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        dateLabel.setForeground(new java.awt.Color(255, 255, 255));
+        dateLabel.setText("Date(YYYY-MM-DD)");
+
+        dateTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout checkinPanelLayout = new javax.swing.GroupLayout(checkinPanel);
         checkinPanel.setLayout(checkinPanelLayout);
@@ -326,50 +363,57 @@ public class EntryManager extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, checkinPanelLayout.createSequentialGroup()
                 .addGap(119, 119, 119)
                 .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkinTimeLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                    .addComponent(checkinTimeLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(nameLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(emailLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(phoneLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(hostEmail1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(hostEmail1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hostEmailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hostEmailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(664, 664, 664))
             .addGroup(checkinPanelLayout.createSequentialGroup()
-                .addGap(274, 274, 274)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(280, 280, 280)
+                .addComponent(checkinButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         checkinPanelLayout.setVerticalGroup(
             checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(checkinPanelLayout.createSequentialGroup()
                 .addGap(85, 85, 85)
-                .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameLabel1)
-                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailLabel1))
+                .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(checkinPanelLayout.createSequentialGroup()
+                        .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nameLabel1)
+                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(phoneLabel1)
+                            .addComponent(phoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dateLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(checkinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkinTimeLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(phoneLabel1)
-                    .addComponent(phoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkinTimeLabel1)
-                    .addComponent(checkinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(checkinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hostEmail1)
-                    .addComponent(hostEmailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hostEmailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hostEmail1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addComponent(checkinButton)
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         variablePanel.add(checkinPanel, "card2");
@@ -391,6 +435,11 @@ public class EntryManager extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton3.setText("Submit");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         hostPhoneLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         hostPhoneLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -418,7 +467,7 @@ public class EntryManager extends javax.swing.JFrame {
                     .addGroup(registerHostPanelLayout.createSequentialGroup()
                         .addGap(365, 365, 365)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(582, Short.MAX_VALUE))
+                .addContainerGap(562, Short.MAX_VALUE))
         );
         registerHostPanelLayout.setVerticalGroup(
             registerHostPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,10 +486,153 @@ public class EntryManager extends javax.swing.JFrame {
                     .addComponent(hostPhoneLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addContainerGap(365, Short.MAX_VALUE))
         );
 
         variablePanel.add(registerHostPanel, "card2");
+
+        searchTokenPanel.setBackground(new java.awt.Color(51, 51, 51));
+        searchTokenPanel.setForeground(new java.awt.Color(51, 51, 51));
+
+        nameLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        nameLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        nameLabel2.setText("Token");
+
+        emailLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        emailLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        emailLabel2.setText("Visitor Email");
+
+        phoneLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        phoneLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        phoneLabel2.setText("Visitor Phone");
+
+        checkinTimeLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        checkinTimeLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        checkinTimeLabel2.setText("Check-out Time");
+
+        hostEmail2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        hostEmail2.setForeground(new java.awt.Color(255, 255, 255));
+        hostEmail2.setText("Host  Phone");
+
+        showTokenTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        showVisitorEmailTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        showVisitorPhoneTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        showHostEmailTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        showCheckoutTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        dateLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        dateLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        dateLabel1.setText("Date(YYYY-MM-DD)");
+
+        showDateTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        nameLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        nameLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        nameLabel3.setText("Visitor Name");
+
+        showVisitorNameTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        showCheckinTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        checkinTimeLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        checkinTimeLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        checkinTimeLabel3.setText("Check-in Time");
+
+        checkinTimeLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        checkinTimeLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        checkinTimeLabel4.setText("Host Name");
+
+        showHostNameTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        showHostPhoneTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        hostEmail3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        hostEmail3.setForeground(new java.awt.Color(255, 255, 255));
+        hostEmail3.setText("Host Email");
+
+        javax.swing.GroupLayout searchTokenPanelLayout = new javax.swing.GroupLayout(searchTokenPanel);
+        searchTokenPanel.setLayout(searchTokenPanelLayout);
+        searchTokenPanelLayout.setHorizontalGroup(
+            searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchTokenPanelLayout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addGroup(searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkinTimeLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nameLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(emailLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(phoneLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hostEmail2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dateLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nameLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(checkinTimeLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(checkinTimeLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hostEmail3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(showHostPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showVisitorNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showHostEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showVisitorEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showVisitorPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showTokenTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showCheckoutTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showCheckinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showHostNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(664, 664, 664))
+        );
+        searchTokenPanelLayout.setVerticalGroup(
+            searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchTokenPanelLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLabel2)
+                    .addComponent(showTokenTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showVisitorNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(searchTokenPanelLayout.createSequentialGroup()
+                        .addGroup(searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(showVisitorEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(phoneLabel2)
+                            .addComponent(showVisitorPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(showDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dateLabel1))
+                .addGap(16, 16, 16)
+                .addGroup(searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showCheckinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkinTimeLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showCheckoutTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkinTimeLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showHostNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkinTimeLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showHostEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hostEmail3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(searchTokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showHostPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hostEmail2))
+                .addContainerGap(135, Short.MAX_VALUE))
+        );
+
+        variablePanel.add(searchTokenPanel, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -476,11 +668,7 @@ public class EntryManager extends javax.swing.JFrame {
         variablePanel.repaint();
         variablePanel.revalidate();
         
-        // TODO: get from database
-        VisitorEntry[] visitors = new VisitorEntry[0];
-//        visitors[0] = new VisitorEntry(1, "a", "b", "c", "d");
-//        visitors[1] = new VisitorEntry(2, "a", "b", "c", "d");
-//        visitors[2] = new VisitorEntry(3, "a", "b", "c", "d");
+        VisitorEntry[] visitors = dbHandler.getEntryList();
         visitorList.setModel(new javax.swing.AbstractListModel() {
             public int getSize() {
                 return visitors.length;
@@ -496,7 +684,46 @@ public class EntryManager extends javax.swing.JFrame {
         String s1 = JOptionPane.showInputDialog("Please enter the token to be searched : ");
         // TODO : get the Details from the token
         if(s1 != null){
-            JOptionPane.showMessageDialog(rootPane, s1);
+            VisitorEntry e = dbHandler.getEntry(Integer.parseInt(s1));
+            Host h = dbHandler.getHost(e.host_email);
+            
+            variablePanel.removeAll();
+            variablePanel.repaint();
+            variablePanel.revalidate();
+            
+            variablePanel.add(searchTokenPanel);
+            variablePanel.repaint();
+            variablePanel.revalidate();
+            
+            showTokenTextField.setText(String.format("%d", e.token));
+            showTokenTextField.setEditable(false);
+            
+            showVisitorNameTextField.setText(e.visitor_name);
+            showVisitorNameTextField.setEditable(false);
+            
+            showVisitorEmailTextField.setText(e.visitor_email);
+            showVisitorEmailTextField.setEditable(false);
+            
+            showVisitorPhoneTextField.setText(e.visitor_phone);
+            showVisitorPhoneTextField.setEditable(false);
+            
+            showDateTextField.setText(e.date);
+            showDateTextField.setEditable(false);
+            
+            showCheckinTextField.setText(e.check_in);
+            showCheckinTextField.setEditable(false);
+            
+            showCheckoutTextField.setText(e.check_out);
+            showCheckoutTextField.setEditable(false);
+            
+            showHostNameTextField.setText(h.name);
+            showHostNameTextField.setEditable(false);
+            
+            showHostEmailTextField.setText(h.email);
+            showHostEmailTextField.setEditable(false);
+            
+            showHostPhoneTextField.setText(h.phone);
+            showHostPhoneTextField.setEditable(false);
         }
     }//GEN-LAST:event_showTokenLabelMouseClicked
 
@@ -522,17 +749,6 @@ public class EntryManager extends javax.swing.JFrame {
         
     }//GEN-LAST:event_checkoutLabelMouseClicked
 
-    private void tokenTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tokenTextFieldActionPerformed
-        variablePanel.removeAll();
-        variablePanel.repaint();
-        variablePanel.revalidate();
-
-        variablePanel.add(showVisitorPanel);
-        variablePanel.repaint();
-        variablePanel.revalidate();
-
-    }//GEN-LAST:event_tokenTextFieldActionPerformed
-
     private void registerHostLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerHostLabelMouseClicked
         variablePanel.removeAll();
         variablePanel.repaint();
@@ -542,6 +758,30 @@ public class EntryManager extends javax.swing.JFrame {
         variablePanel.repaint();
         variablePanel.revalidate();
     }//GEN-LAST:event_registerHostLabelMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        dbHandler.updateCheckoutTime(Integer.parseInt(tokenTextField.getText()), checkoutTextField.getText());
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        Host host = new Host(hostNameTextField.getText(), hostEmailTextField.getText(), hostPhoneTextField.getText());
+        dbHandler.insertHost(host);
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void checkinButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkinButtonMouseClicked
+        int token = dbHandler.insertEntry(
+                new VisitorEntry(-1,
+                hostEmailTextField.getText(),
+                nameTextField.getText(),
+                emailTextField.getText(),
+                phoneTextField.getText(),
+                dateTextField.getText(),
+                checkinTextField.getText(),
+                null)
+        );
+        
+        JOptionPane.showMessageDialog(rootPane, String.format("Entry token : %d", token));
+    }//GEN-LAST:event_checkinButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -577,21 +817,33 @@ public class EntryManager extends javax.swing.JFrame {
                 new EntryManager().setVisible(true);
             }
         });
+        
     }
 
+    private DatabaseHandler dbHandler;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton checkinButton;
     private javax.swing.JLabel checkinLabel;
     private javax.swing.JPanel checkinPanel;
     private javax.swing.JTextField checkinTextField;
     private javax.swing.JLabel checkinTimeLabel1;
+    private javax.swing.JLabel checkinTimeLabel2;
+    private javax.swing.JLabel checkinTimeLabel3;
+    private javax.swing.JLabel checkinTimeLabel4;
     private javax.swing.JLabel checkoutLabel;
     private javax.swing.JPanel checkoutPanel;
     private javax.swing.JTextField checkoutTextField;
     private javax.swing.JLabel checkoutTimeLabel;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JLabel dateLabel1;
+    private javax.swing.JTextField dateTextField;
     private javax.swing.JLabel emailLabel1;
+    private javax.swing.JLabel emailLabel2;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JLabel headingLabel;
     private javax.swing.JLabel hostEmail1;
+    private javax.swing.JLabel hostEmail2;
+    private javax.swing.JLabel hostEmail3;
     private javax.swing.JLabel hostEmailLabel;
     private javax.swing.JTextField hostEmailTextField;
     private javax.swing.JTextField hostEmailTextField1;
@@ -600,19 +852,32 @@ public class EntryManager extends javax.swing.JFrame {
     private javax.swing.JLabel hostPhoneLabel;
     private javax.swing.JTextField hostPhoneTextField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nameLabel1;
+    private javax.swing.JLabel nameLabel2;
+    private javax.swing.JLabel nameLabel3;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JLabel phoneLabel1;
+    private javax.swing.JLabel phoneLabel2;
     private javax.swing.JTextField phoneTextField;
     private javax.swing.JLabel registerHostLabel;
     private javax.swing.JPanel registerHostPanel;
+    private javax.swing.JPanel searchTokenPanel;
+    private javax.swing.JTextField showCheckinTextField;
+    private javax.swing.JTextField showCheckoutTextField;
+    private javax.swing.JTextField showDateTextField;
+    private javax.swing.JTextField showHostEmailTextField;
+    private javax.swing.JTextField showHostNameTextField;
+    private javax.swing.JTextField showHostPhoneTextField;
     private javax.swing.JLabel showTokenLabel;
+    private javax.swing.JTextField showTokenTextField;
+    private javax.swing.JTextField showVisitorEmailTextField;
     private javax.swing.JLabel showVisitorLabel;
+    private javax.swing.JTextField showVisitorNameTextField;
     private javax.swing.JPanel showVisitorPanel;
+    private javax.swing.JTextField showVisitorPhoneTextField;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JLabel tokenLabel;
     private javax.swing.JTextField tokenTextField;
