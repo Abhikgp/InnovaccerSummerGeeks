@@ -40,7 +40,7 @@ public class VisitorEntry{
     }
     
     public static String colHeadings(){
-        return String.format("%8s %20s %30s %20s %30s %15s %10s %10s", 
+        return String.format("%-8s %-45s %-40s %-40s %-40s %-15s %-15s %-15s", 
                 "Token",
                 "Host Email",
                 "Name", 
@@ -52,7 +52,7 @@ public class VisitorEntry{
     }
     
     public String toString(){
-        return String.format("%8d %20s %30s %20s %30s %15s %20s %20s", 
+        return String.format("%-10d %-30s %-30s %-30s %-30s %-15s %-15s %-15s", 
                 this.token,
                 this.host_email,
                 this.visitor_name, 
@@ -62,4 +62,55 @@ public class VisitorEntry{
                 this.check_in,
                 this.check_out);
     }
+    
+    public String getCheckoutMail(Host h){
+        return String.format(
+                "Auto Generated Mail from Entry Management System\n"+
+                "Token        : %d\n"+
+                "Visitor Name : %s\n"+
+                "Visitor Email: %s\n"+
+                "Visitor Phone: %s\n"+
+                "Host Name    : %s\n"+
+                "Host Email   : %s\n"+
+                "Host Phone   : %s\n"+
+                "Checkin Date : %s\n"+
+                "Checkin Time : %s\n"+
+                "Checkout Time: %s\n",
+                this.token,
+                this.visitor_name,
+                this.visitor_email,
+                this.visitor_phone,
+                h.name,
+                h.email,
+                h.phone,
+                this.date,
+                this.check_in,
+                this.check_out
+                );
+    }
+    
+    public String getCheckinMail(Host h){
+        return String.format(
+                "Auto Generated Mail from Entry Management System\n"+
+                "Token        : %d\n"+
+                "Visitor Name : %s\n"+
+                "Visitor Email: %s\n"+
+                "Visitor Phone: %s\n"+
+                "Host Name    : %s\n"+
+                "Host Email   : %s\n"+
+                "Host Phone   : %s\n"+
+                "Checkin Date : %s\n"+
+                "Checkin Time : %s\n",
+                this.token,
+                this.visitor_name,
+                this.visitor_email,
+                this.visitor_phone,
+                h.name,
+                h.email,
+                h.phone,
+                this.date,
+                this.check_in
+                );
+    }
+    
 }

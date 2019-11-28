@@ -6,9 +6,22 @@
 package innovaccersummergeeks;
 
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Arrays;
+import java.util.Properties;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.*;
+import javax.mail.internet.*;
 
 /**
  *
@@ -760,7 +773,16 @@ public class EntryManager extends javax.swing.JFrame {
     }//GEN-LAST:event_registerHostLabelMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        dbHandler.updateCheckoutTime(Integer.parseInt(tokenTextField.getText()), checkoutTextField.getText());
+        int token = Integer.parseInt(tokenTextField.getText());
+        dbHandler.updateCheckoutTime(token, checkoutTextField.getText());
+        VisitorEntry v = dbHandler.getEntry(token);
+        sendCheckoutEmail(v);
+        try {
+            sendSMS(v.visitor_phone, "Test text");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -771,7 +793,7 @@ public class EntryManager extends javax.swing.JFrame {
     private void checkinButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkinButtonMouseClicked
         int token = dbHandler.insertEntry(
                 new VisitorEntry(-1,
-                hostEmailTextField.getText(),
+                hostEmailTextField1.getText(),
                 nameTextField.getText(),
                 emailTextField.getText(),
                 phoneTextField.getText(),
@@ -781,6 +803,14 @@ public class EntryManager extends javax.swing.JFrame {
         );
         
         JOptionPane.showMessageDialog(rootPane, String.format("Entry token : %d", token));
+        VisitorEntry v = dbHandler.getEntry(token);
+        Host h = dbHandler.getHost(v.host_email);
+        sendCheckinEmail(v);
+        try{
+            sendSMS(h.phone, v.getCheckinMail(h));
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_checkinButtonMouseClicked
 
     /**
@@ -818,6 +848,119 @@ public class EntryManager extends javax.swing.JFrame {
             }
         });
         
+    }
+    
+    private void sendCheckinEmail(VisitorEntry e){
+        String from = "XXXXXXXXXX";
+        String password = "XXXXXXXX";
+        String[] to = {e.host_email};
+        String subject = "Visitor Entry";
+        String body = e.getCheckinMail(dbHandler.getHost(e.host_email));
+        
+        sendFromGMail(from, password, to, subject, body);
+    }
+    
+    private void sendCheckoutEmail(VisitorEntry e){
+        String from = "XXXXXXX";
+        String password = "XXXXXXX";
+        String[] to = {e.visitor_email};
+        String subject = "Visitor Entry";
+        String body = e.getCheckoutMail(dbHandler.getHost(e.host_email));
+        
+        sendFromGMail(from, password, to, subject, body);
+    }
+    
+    
+    private static void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
+        Properties props = System.getProperties();
+        String host = "smtp.gmail.com";
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.user", from);
+        props.put("mail.smtp.password", pass);
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+
+        Session session = Session.getDefaultInstance(props);
+        MimeMessage message = new MimeMessage(session);
+
+        try {
+            message.setFrom(new InternetAddress(from));
+            InternetAddress[] toAddress = new InternetAddress[to.length];
+
+            // To get the array of addresses
+            for( int i = 0; i < to.length; i++ ) {
+                toAddress[i] = new InternetAddress(to[i]);
+            }
+
+            for( int i = 0; i < toAddress.length; i++) {
+                message.addRecipient(Message.RecipientType.TO, toAddress[i]);
+            }
+
+            message.setSubject(subject);
+            message.setText(body);
+            Transport transport = session.getTransport("smtp");
+            transport.connect(host, from, pass);
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+                        
+        }
+        catch (AddressException ae) {
+            ae.printStackTrace();
+        }
+        catch (MessagingException me) {
+            me.printStackTrace();
+        }
+    }
+    
+    private static void sendSMS(String phone, String body) throws Exception{
+        String myURI = "https://api.bulksms.com/v1/messages";
+
+        String myUsername = "cyxt3";
+        String myPassword = "@QuickBrown123";
+        
+          String myData = "{to: \""+phone+"\", "
+                  + "encoding: \"UNICODE\", "
+                  + "body: \""+body+"\"}";
+          
+        URL url = new URL(myURI);
+        HttpURLConnection request = (HttpURLConnection) url.openConnection();
+        request.setDoOutput(true);
+
+        // supply the credentials
+        String authStr = myUsername + ":" + myPassword;
+        String authEncoded = Base64.getEncoder().encodeToString(authStr.getBytes());
+        request.setRequestProperty("Authorization", "Basic " + authEncoded);
+        
+        request.setRequestMethod("POST");
+        request.setRequestProperty( "Content-Type", "application/json");
+
+        // write the data to the request
+        OutputStreamWriter out = new OutputStreamWriter(request.getOutputStream());
+        out.write(myData);
+        out.close();
+
+        // try ... catch to handle errors nicely
+        try {
+        // make the call to the API
+        InputStream response = request.getInputStream();
+        BufferedReader in = new BufferedReader(new InputStreamReader(response));
+        String replyText;
+        while ((replyText = in.readLine()) != null) {
+            System.out.println(replyText);
+        }
+        in.close();
+    }   catch (IOException ex) {
+        System.out.println("An error occurred:" + ex.getMessage());
+            BufferedReader in = new BufferedReader(new InputStreamReader(request.getErrorStream()));
+            // print the detail that comes with the error
+            String replyText;
+            while ((replyText = in.readLine()) != null) {
+                System.out.println(replyText);
+            }
+            in.close();
+        }
+        request.disconnect();
     }
 
     private DatabaseHandler dbHandler;
